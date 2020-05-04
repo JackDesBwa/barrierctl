@@ -1,0 +1,38 @@
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.6.0'
+    }
+}
+
+allprojects {
+  repositories {
+      google()
+      jcenter()
+  }
+}
+
+apply plugin: 'com.android.application'
+
+android {
+	compileSdkVersion 23
+signingConfigs {
+	release { // Update for the local situation
+		storeFile file("barrierctl.keystore")
+		storePassword "barrierctl"
+		keyAlias "barrierctl"
+		keyPassword "barrierctl"
+	}
+}
+
+buildTypes {
+	release {
+		signingConfig signingConfigs.release
+	}
+}
+
+}
+
